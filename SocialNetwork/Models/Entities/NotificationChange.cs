@@ -16,7 +16,5 @@ namespace SocialNetwork.Models
         public int NotificationObjectId { get; set; }
         public int ActorId { get; set; }
         public bool Status { get; set; }
-        public virtual NotificationObject NotificationObject { get; set; }
-        public virtual User Actor { get; set; }
     }
 }

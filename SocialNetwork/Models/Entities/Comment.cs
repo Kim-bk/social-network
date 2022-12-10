@@ -10,6 +10,7 @@ namespace SocialNetwork.Models
     {
         public Comment()
         {
+
         }
 #nullable enable
        
@@ -18,7 +19,5 @@ namespace SocialNetwork.Models
         public DateTime CreatedDate { get; set; }
         public int PostId { get; set; }
         public int AuthorId { get; set; }
-        public virtual Post Post { get; set; }
-        public virtual User User { get; set; }
     }
 }

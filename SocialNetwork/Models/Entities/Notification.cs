@@ -20,7 +20,5 @@ namespace SocialNetwork.Models
         public int PostId { get; set; }
         public int NotifierId { get; set; }
         public virtual NotificationObject NotificationObject { get; set; }
-        public virtual Post Post { get; set; }
-        public virtual User Notifier { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using System.Security.Principal;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -19,7 +20,5 @@ namespace SocialNetwork.Models
         public bool Status { get; set; }
         public int SourceId { get; set; }
         public int TargetId { get; set; }
-        public virtual User UserSource { get; set; }
-        public virtual User UserTarget { get; set; }
     }
 }

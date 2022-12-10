@@ -10,6 +10,7 @@ namespace SocialNetwork.Models
     {
         public User()
         {
+            Comments = new HashSet<Comment>();
         }
 #nullable enable
 
@@ -27,5 +28,6 @@ namespace SocialNetwork.Models
         public System.Guid ActivationCode { get; set; }
         public System.Guid ResetPasswordCode { get; set; }
         public virtual UserGroup UserGroup { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }
