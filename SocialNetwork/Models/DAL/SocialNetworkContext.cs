@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Net;
 using System.Security.Principal;
-using CommercialClothes.Models;
+using SocialNetwork.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using static System.Net.Mime.MediaTypeNames;

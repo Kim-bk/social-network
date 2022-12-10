@@ -70,3 +70,6 @@ D:\Semester 7\Chuyên đề CNTT\SocialNetwork\obj\Debug\net6.0\refint\SocialNet
 D:\Semester 7\Chuyên đề CNTT\SocialNetwork\obj\Debug\net6.0\SocialNetwork.pdb
 D:\Semester 7\Chuyên đề CNTT\SocialNetwork\obj\Debug\net6.0\SocialNetwork.genruntimeconfig.cache
 D:\Semester 7\Chuyên đề CNTT\SocialNetwork\obj\Debug\net6.0\ref\SocialNetwork.dll
+D:\Semester 7\Chuyên đề CNTT\SocialNetwork\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.Design.dll
+D:\Semester 7\Chuyên đề CNTT\SocialNetwork\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Semester 7\Chuyên đề CNTT\SocialNetwork\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.Design.dll

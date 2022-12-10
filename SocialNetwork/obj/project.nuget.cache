@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "K1621nEF3FBcXP19F9PZoDnuo6Cia+GVz3XA3ytySIsAzE4H0XzvH0xeFvWNEo7R5GKKLUcrY0wqiRh4I09gsQ==",
+  "dgSpecHash": "2KHcygp+cHMpjKkzKJwCQsg9EH71zEg4BKaslaSgWlRDJCITDb+zyWK8cyTVRfrTE1DILMOjGDb6l+9zNq1X8w==",
   "success": true,
   "projectFilePath": "D:\\Semester 7\\Chuyên đề CNTT\\SocialNetwork\\SocialNetwork.csproj",
   "expectedPackageFiles": [
@@ -38,6 +38,9 @@
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.entityframeworkcore.design\\6.0.9\\microsoft.entityframeworkcore.design.6.0.9.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.entityframeworkcore.proxies\\6.0.9\\microsoft.entityframeworkcore.proxies.6.0.9.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\6.0.9\\microsoft.entityframeworkcore.relational.6.0.9.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.entityframeworkcore.relational.design\\1.1.6\\microsoft.entityframeworkcore.relational.design.1.1.6.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\1.1.6\\microsoft.entityframeworkcore.sqlserver.1.1.6.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver.design\\1.1.6\\microsoft.entityframeworkcore.sqlserver.design.1.1.6.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\6.0.9\\microsoft.entityframeworkcore.tools.6.0.9.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0\\microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.extensions.caching.memory\\6.0.1\\microsoft.extensions.caching.memory.6.0.1.nupkg.sha512",
@@ -165,6 +168,7 @@
     "C:\\Users\\ASUS\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.1\\system.threading.tasks.extensions.4.5.1.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\system.threading.thread\\4.3.0\\system.threading.thread.4.3.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",

@@ -1,11 +1,11 @@
 ﻿using System;
-using CommercialClothes.Models.DAL;
+using SocialNetwork.Models.DAL;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SocialNetwork.Models;
 using SocialNetwork.Models.DAL;
 
-namespace ComercialClothes.Extensions
+namespace SocialNetwork.Extensions
 {
     public static class ServiceCollectionExtensions
     {

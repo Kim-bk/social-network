@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
-namespace CommercialClothes.Models
+namespace SocialNetwork.Models
 {
     public partial class Credential : BaseEntity
     {

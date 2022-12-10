@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SocialNetwork.Models.DAL;
 
-namespace CommercialClothes.Models.DAL
+namespace SocialNetwork.Models.DAL
 {
     public class Repository<T> : IRepository<T> where T : class
     {
