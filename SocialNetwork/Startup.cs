@@ -16,6 +16,7 @@ using System.Text;
 using System;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Security.Claims;
+using SocialNetwork.Services.Mapping;
 
 namespace SocialNetwork
 {
@@ -37,16 +38,16 @@ namespace SocialNetwork
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-         
+
             // Auto Mapper Configurations
-/*            var mapperConfig = new MapperConfiguration(mc =>
+            var mapperConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new MappingProfile());
             });
 
             IMapper mapper = mapperConfig.CreateMapper();
 
-            services.AddSingleton(mapper);*/
+            services.AddSingleton(mapper);
 
             services.AddControllers();
 
@@ -62,7 +63,7 @@ namespace SocialNetwork
             });
  
             services.AddDatabase(Configuration)
-                   /* .AddServices()*/
+                    .AddServices()
                     .AddRepositories();
 
             services.AddAuthentication(auth =>

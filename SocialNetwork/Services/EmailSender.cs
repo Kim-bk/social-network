@@ -1,6 +1,5 @@
 using System;
 using SocialNetwork.Models.DTOs.Settings;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using MimeKit;
 using MailKit.Security;
@@ -20,20 +19,20 @@ namespace SocialNetwork.Services
         {
             try
             {
-                var api = "https://commerce-2clothy.azurewebsites.net/api/user/" + emailFor + "?code=" + code;
+                var api = "https://social-network-api.azurewebsites.net/api" + emailFor + "?code=" + code;
                 string subject = "";
                 string body = "";
 
                 if (emailFor == "verify-User")
                 {
-                    subject = "2Clothy - Xác thực Email để kích hoạt tài khoản!";
+                    subject = "SocialNetwork - Xác thực Email để kích hoạt tài khoản!";
                     body = "<h3>BƯỚC CUỐI CÙNG ĐẺ KÍCH HOẠT TÀI KHOẢN.</h3> " +
                        "<br/>Vui lòng click vào link để xác nhận Email của tài khoản" +
                        "<a href =" + api + "> Verify User link</a>";
                 }
                 else if (emailFor == "reset-password")
                 {
-                    subject = "2Clothy - Thay đổi mật khẩu";
+                    subject = "SocialNetwork - Thay đổi mật khẩu";
                     body = "XIN CHÀO! , <br/><br/>Chúng tôi nhận được yêu cầu thay đổi mật khẩu của bạn. Vui lòng click vào link bên dưới để thay đổi" +
                         "<br/><br/><a href =" + api + ">Reset Password link</a>";
                 }

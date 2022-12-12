@@ -12,9 +12,5 @@ namespace SocialNetwork.Models.DAL.Repositories
         {
         }
 
-        public async Task<User> GetNameUser(int idShop)
-        {
-            return await GetQuery(sh => sh.ShopId == idShop).FirstOrDefaultAsync();
-        }
     }
 }

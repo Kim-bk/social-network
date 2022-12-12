@@ -14,7 +14,6 @@ namespace SocialNetwork.Models
         }
 #nullable enable
 
-        public int? ShopId { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string? Name { get; set; }

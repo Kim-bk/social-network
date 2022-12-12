@@ -19,7 +19,7 @@ builder.Configuration.AddConfiguration(configurationBuilder.Build());
 
 
 var defaultConnectionString = string.Empty;
-defaultConnectionString = builder.Configuration.GetConnectionString("DBConnection");
+defaultConnectionString = builder.Configuration.GetConnectionString("DbConnection");
 
 builder.Services.AddDbContext<SocialNetworkContext>(
     options =>

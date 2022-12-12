@@ -1,6 +1,4 @@
 ﻿using SocialNetwork.Models.Base;
-using System;
-using System.Collections.Generic;
 
 #nullable disable
 

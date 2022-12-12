@@ -4,6 +4,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SocialNetwork.Models;
 using SocialNetwork.Models.DAL;
+using SocialNetwork.Services;
+using SocialNetwork.Services.TokenGenerators;
+using SocialNetwork.Services.Interfaces;
+using SocialNetwork.Services.TokenValidators;
+using SocialNetwork.Services.Mapping;
+using SocialNetwork.Models.DTOs.Settings;
+using SocialNetwork.Models.DAL.Interfaces;
+using SocialNetwork.Models.DAL.Repositories;
 
 namespace SocialNetwork.Extensions
 {
@@ -14,7 +22,7 @@ namespace SocialNetwork.Extensions
             services.AddScoped((Func<IServiceProvider, Func<SocialNetworkContext>>)((provider) => () => provider.GetService<SocialNetworkContext>()));
             services.AddScoped<DbFactory>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-          //  services.Configure<MailSettings>(configuration.GetSection("MailSettings"));
+            services.Configure<MailSettings>(configuration.GetSection("MailSettings"));
 
             return services;
         }
@@ -22,14 +30,17 @@ namespace SocialNetwork.Extensions
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
             return services
-                .AddScoped(typeof(IRepository<>), typeof(Repository<>));
-             
+               .AddScoped(typeof(IRepository<>), typeof(Repository<>))
+               .AddScoped<IUserRepository, UserRepository>()
+               .AddScoped<IRoleRepository, RoleRepository>()
+               .AddScoped<IRefreshTokenRepository, RefreshTokenRepository>()
+               .AddScoped<IUserGroupRepository, UserGroupRepository>()
+               .AddScoped<ICredentialRepository, CredentialRepository>();
         }
 
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-            return null;
-          /*  return services
+            return services
                 .AddScoped<Encryptor>()
                 .AddScoped<AccessTokenGenerator>()
                 .AddScoped<RefreshTokenGenerator>()
@@ -37,22 +48,12 @@ namespace SocialNetwork.Extensions
                 .AddScoped<TokenGenerator>()
                 .AddScoped<IEmailSender, EmailSender>()
                 .AddScoped<IUserService, UserService>()
-                .AddScoped<IItemService, ItemService>()
-                .AddScoped<ICategoryService, CategoryService>()
                 .AddScoped<IMapperCustom, Mapper>()
-                .AddScoped<IImageService, ImageService>()
-                .AddScoped<IOrderService, OrderService>()
-                .AddScoped<ISearchService, SearchService>()
                 .AddScoped<IPermissionService, PermissionService>()
-                .AddScoped<IShopService, ShopService>()
                 .AddScoped<IRoleService, RoleService>()
                 .AddScoped<IUserGroupService, UserGroupService>()
                 .AddScoped<IAuthService, AuthService>()
-                .AddScoped<ICartService, CartService>()
-                .AddScoped<IStatisticalService, StatisticalService>()
-                .AddScoped<IBankService, BankService>()
-                .AddScoped<IPaymentService, PaymentService>()
-                .AddScoped<IAdminService, AdminService>();*/
+                .AddScoped<IAdminService, AdminService>();
         }
     }
 }

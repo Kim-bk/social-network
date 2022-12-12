@@ -3,7 +3,6 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using SocialNetwork.Models.DTOs.Requests;
 using SocialNetwork.Models.DTOs;
-using SocialNetwork.Models.DTOs.Requests;
 using SocialNetwork.Services;
 using SocialNetwork.Services.Interfaces;
 using SocialNetwork.Services.TokenGenerators;
@@ -29,6 +28,12 @@ namespace SocialNetwork.Controllers
             _refreshTokenGenerator = refreshTokenGenerator;
             _permissionService = permissionService;
         }
+
+        [HttpGet("test")]
+        public async Task<IActionResult> Test()
+        {
+            return Ok("test");
+        }    
 
         [Authorize]
         [HttpGet]
@@ -123,8 +128,8 @@ namespace SocialNetwork.Controllers
             return BadRequest(rs.ErrorMessage);
         }
 
-        [HttpGet("verify-User")]
-        // api/user/verify-User?code
+        [HttpGet("verify-user")]
+        // api/user/verify-user?code
         public async Task<IActionResult> VerifyUser([FromQuery] string code)
         {
             var rs = await _userService.CheckUserByActivationCode(new Guid(code));

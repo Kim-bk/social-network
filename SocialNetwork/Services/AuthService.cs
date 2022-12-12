@@ -31,11 +31,9 @@ namespace SocialNetwork.Services
         {
             try
             {
-                // Pre-handle user shop ID null
-                string userShopId = user.ShopId == null ? "-1" : user.ShopId.ToString();
 
                 // 1. Generate access vs refresh token
-                var accessToken = _accessTokenGenerator.Generate(user, userShopId, listCredentials);
+                var accessToken = _accessTokenGenerator.Generate(user, listCredentials);
                 var refreshToken = _refreshTokenGenerator.Generate();
 
                 // 2. Init refresh token properties
@@ -59,8 +57,6 @@ namespace SocialNetwork.Services
                     IsSuccess = true,
                     AccessToken = new JwtSecurityTokenHandler().WriteToken(accessToken),
                     RefreshToken = refreshTokenHandler,
-                    ShopId = Convert.ToInt32(userShopId)
-
                 };
             }
             catch (Exception e)

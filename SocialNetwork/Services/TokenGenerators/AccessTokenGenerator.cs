@@ -18,13 +18,12 @@ namespace SocialNetwork.Services.TokenGenerators
             _tokenGenerator = tokenGenerator;
         }
 
-        public JwtSecurityToken Generate(User user, string userShopId, string listCredentials)
+        public JwtSecurityToken Generate(User user, string listCredentials)
         {
             var claims = new[]
             {
                 new Claim("Email", user.Email),
                 new Claim("Credentials", listCredentials),
-                new Claim("ShopId", userShopId),
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
             };
 
