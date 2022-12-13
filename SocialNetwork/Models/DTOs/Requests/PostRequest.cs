@@ -1,12 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 
 namespace SocialNetwork.Models.DTOs.Requests
 {
     public class PostRequest
     {
-        public int PostId { get; set; }
+        public IFormFile File { get; set; }
         public string Content { get; set; }
-        public string FileUrl { get; set; }
-
     }
 }

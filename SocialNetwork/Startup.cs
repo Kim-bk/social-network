@@ -52,9 +52,10 @@ namespace SocialNetwork
             services.AddControllers();
 
             services.AddControllers().AddNewtonsoftJson();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.TryAddSingleton<IWebHostEnvironment>();
 
             services.AddScoped<IUrlHelper>(x => {
                 var actionContext = x.GetRequiredService<IActionContextAccessor>().ActionContext;
