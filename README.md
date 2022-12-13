@@ -1,11 +1,7 @@
-## Social Network - Topic 7 - Source Code Back-end
-Final project of Information Technology Topics (CĐ-CNTT)
+## 19N14 - TEAM 5 - Social Network: New feeds 
+
+# This is a source code of Back-end
 - This is Use-Case Diagram
 https://trello.com/1/cards/630645fffd8cfc007a6e8e47/attachments/63064f1a8f576540c74755da/previews/63064f1a8f576540c747560d/download/Usercase_PBL6_final.png
 
-## Lớp 19N14 - Nhóm 5:
-## Thành viên:
-- Nguyễn Hoàng Kim
-- Hà Tiến Chung
-- Đỗ Tân Trường Sanh
 
