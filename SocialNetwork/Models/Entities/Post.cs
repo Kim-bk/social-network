@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using System.Security.Principal;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -13,10 +14,11 @@ namespace SocialNetwork.Models
         {
         }
 #nullable enable
-        public string Content { get; set; }
+        public string? Content { get; set; }
+        public string? FileUrl { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
-        public int AuthorId { get; set; }
+        public bool? IsApproved { get; set; }
         public virtual User User { get; set; }
     }
 }

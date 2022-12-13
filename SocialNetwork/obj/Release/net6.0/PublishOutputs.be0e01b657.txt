@@ -7,6 +7,7 @@ D:\Semester 7\Chuyên đề CNTT\SocialNetwork\obj\Release\net6.0\PubTmp\Out\Soc
 D:\Semester 7\Chuyên đề CNTT\SocialNetwork\obj\Release\net6.0\PubTmp\Out\AutoMapper.dll
 D:\Semester 7\Chuyên đề CNTT\SocialNetwork\obj\Release\net6.0\PubTmp\Out\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\Semester 7\Chuyên đề CNTT\SocialNetwork\obj\Release\net6.0\PubTmp\Out\Castle.Core.dll
+D:\Semester 7\Chuyên đề CNTT\SocialNetwork\obj\Release\net6.0\PubTmp\Out\CloudinaryDotNet.dll
 D:\Semester 7\Chuyên đề CNTT\SocialNetwork\obj\Release\net6.0\PubTmp\Out\EntityFramework.SqlServer.dll
 D:\Semester 7\Chuyên đề CNTT\SocialNetwork\obj\Release\net6.0\PubTmp\Out\EntityFramework.dll
 D:\Semester 7\Chuyên đề CNTT\SocialNetwork\obj\Release\net6.0\PubTmp\Out\MailKit.dll

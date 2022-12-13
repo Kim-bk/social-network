@@ -19,21 +19,18 @@ namespace SocialNetwork.Controllers
         private readonly IAuthService _authService;
         private readonly RefreshTokenGenerator _refreshTokenGenerator;
         private readonly IPermissionService _permissionService;
+        private readonly IPostService _postService;
 
         public UserController(IUserService userService, IAuthService authService
-                 , RefreshTokenGenerator refreshTokenGenerator, IPermissionService permissionService)
+                 , RefreshTokenGenerator refreshTokenGenerator, IPermissionService permissionService
+                 , IPostService postService)
         {
             _userService = userService;
             _authService = authService;
             _refreshTokenGenerator = refreshTokenGenerator;
             _permissionService = permissionService;
+            _postService = postService;
         }
-
-        [HttpGet("test")]
-        public async Task<IActionResult> Test()
-        {
-            return Ok("test");
-        }    
 
         [Authorize]
         [HttpGet]
@@ -194,6 +191,20 @@ namespace SocialNetwork.Controllers
             }
             return BadRequest(rs.ErrorMessage);
         }
-      
+
+        #region Post 
+
+        [Authorize]
+        [HttpPost("post")]
+        // api/user/post
+        public async Task<bool> AddPost([FromBody] PostRequest request)
+        {
+            var userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            return await _postService.AddPost(request, userId);
+        }
+
+        #endregion
+
+
     }
 }

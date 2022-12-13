@@ -13,6 +13,7 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <!-- <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" /> -->
     <PackageReference Include="AutoMapper" Version="12.0.0" />
+    <PackageReference Include="CloudinaryDotNet" Version="1.20.0" />
     <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="MailKit" Version="3.4.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.10" />
@@ -39,8 +40,6 @@
 
   <ItemGroup>
     <Folder Include="Common\CustomAttribute\" />
-    <Folder Include="Models\DTOs\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1development_1json__JsonSchema="https://beaujs.com/schema.json" /></VisualStudio></ProjectExtensions>
