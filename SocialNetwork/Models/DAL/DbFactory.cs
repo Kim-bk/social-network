@@ -16,6 +16,7 @@ namespace SocialNetwork.Models.DAL
 
         public void Dispose()
         {
+            //bla bla 
             if (!_disposed && _dbContext != null)
             {
                 _disposed = true;

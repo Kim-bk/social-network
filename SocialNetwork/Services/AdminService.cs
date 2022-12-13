@@ -9,6 +9,7 @@ using Org.BouncyCastle.Ocsp;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SocialNetwork.Models.DTOs;
 
 namespace SocialNetwork.Services
 {
@@ -17,15 +18,40 @@ namespace SocialNetwork.Services
         private readonly ICredentialRepository _credentialRepo;
         private readonly IRoleRepository _roleRepo;
         private readonly IUserRepository _userRepo;
+        private readonly IPostRepository _postRepo;
         private readonly Encryptor _encryptor;
         public AdminService(ICredentialRepository credentialRepo, IMapperCustom mapper
             , IUnitOfWork unitOfWork, IRoleRepository roleRepo
-            , IUserRepository userRepo, Encryptor encryptor) : base(unitOfWork, mapper)
+            , IUserRepository userRepo, Encryptor encryptor, IPostRepository postRepo) : base(unitOfWork, mapper)
         {
             _credentialRepo = credentialRepo;
             _roleRepo = roleRepo;
             _userRepo = userRepo;
             _encryptor = encryptor;
+            _postRepo = postRepo;
+        }
+
+        public async Task<bool> ApprovePost(int postId, string action)
+        {
+            var post = await _postRepo.FindAsync(p => p.Id == postId);
+
+            if (action == "approve")
+            {
+                post.IsApproved = true;
+            }  
+            else
+            {
+                post.IsApproved = false;
+            }
+
+            await _unitOfWork.CommitTransaction();
+            return true;
+        }
+
+        public async Task<List<PostDTO>> GetUnapprovedPosts()
+        {
+            var rs = await _postRepo.GetUnapprovedPosts();
+            return _mapper.MapPosts(rs);
         }
 
         public async Task<List<CredentialResponse>> GetRolesOfUserGroup(int userGroup)
