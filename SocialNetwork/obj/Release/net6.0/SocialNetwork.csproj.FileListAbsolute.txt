@@ -82,3 +82,4 @@ D:\Semester 7\Chuyên đề CNTT\SocialNetwork\obj\Release\net6.0\SocialNetwork.
 D:\Semester 7\Chuyên đề CNTT\SocialNetwork\obj\Release\net6.0\SocialNetwork.genruntimeconfig.cache
 D:\Semester 7\Chuyên đề CNTT\SocialNetwork\obj\Release\net6.0\ref\SocialNetwork.dll
 D:\Semester 7\Chuyên đề CNTT\SocialNetwork\bin\Release\net6.0\CloudinaryDotNet.dll
+D:\Semester 7\Chuyên đề CNTT\SocialNetwork\bin\Release\net6.0\SocialNetwork.staticwebassets.runtime.json

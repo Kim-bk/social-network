@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SocialNetwork.Models;
 using System.Collections.Generic;
+using SocialNetwork.Models.DTOs.Responses;
+using Microsoft.AspNetCore.Http;
 
 namespace SocialNetwork.Controllers
 {
@@ -199,21 +201,26 @@ namespace SocialNetwork.Controllers
         [Authorize]
         [HttpPost("post")]
         // api/user/post
-        public async Task<bool> AddPost([FromBody] PostRequest request)
+        public async Task<bool> AddPost([FromForm] PostRequest request)
         {
             var userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
             return await _postService.AddPost(request, userId);
         }
 
         [Authorize]
-        [HttpPut("post")]
+        [HttpPut("post/{postId:int}")]
         // api/user/post
-        public async Task<bool> UpdatePost([FromBody] PostRequest request)
+        public async Task<IActionResult> UpdatePost([FromForm] PostRequest request, int postId)
         {
             try
             {
                 var userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-                return await _postService.UpdatePost(request, userId);
+                var rs = await _postService.UpdatePost(request, postId);
+                if (!rs.IsSuccess)
+                {
+                    return BadRequest(rs.ErrorMessage);
+                }
+                return Ok(rs.IsSuccess);
             }
             catch
             {

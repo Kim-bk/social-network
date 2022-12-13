@@ -5,7 +5,19 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SocialNetwork.Models;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      builder =>
+                      {
+                          builder.WithOrigins("http://localhost:3000", "https://localhost:3000")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                      });
+});
 
 var configurationBuilder = new ConfigurationBuilder()
                             .SetBasePath(builder.Environment.ContentRootPath)
@@ -59,8 +71,6 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
-app.UseCors(
-      options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
-  );
+app.UseCors(MyAllowSpecificOrigins);
 
 app.Run();

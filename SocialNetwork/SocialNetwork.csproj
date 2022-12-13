@@ -40,6 +40,7 @@
 
   <ItemGroup>
     <Folder Include="Common\CustomAttribute\" />
+    <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1development_1json__JsonSchema="https://beaujs.com/schema.json" /></VisualStudio></ProjectExtensions>
