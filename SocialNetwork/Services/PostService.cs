@@ -23,12 +23,14 @@ namespace SocialNetwork.Services
         private readonly string CLOUD_NAME = "dor7ghk95";
         private readonly string API_KEY = "588273259994552";
         private readonly string API_SECRET = "YImi-iuUxclgZJFC2-R0cN3tcEA";
-        private Cloudinary _cloudinary;
+        private readonly string CLOUDINARY_API = "https://api.cloudinary.com/v1_1/dor7ghk95/mh/upload";
+        private readonly string CLOUDINARY_UPLOAD_PRESET = "ot8kn4em/mh/upload";
 
         #endregion
 
         private readonly IPostRepository _postRepo;
         private readonly IUserRepository _userRepo;
+        private Cloudinary _cloudinary;
         private readonly List<string> ImageExtensions = new List<string> {".png", ".jpg", ".jpeg" };
         private readonly List<string> VideoExtensions = new List<string> { ".mp4", "m4p", ".m4v",".mpg", ".mpeg", ".m2v", ".mov" };
 
@@ -48,6 +50,7 @@ namespace SocialNetwork.Services
                     var uploadParams = new ImageUploadParams
                     {
                         File = new FileDescription(path),
+                        EagerAsync = true,
                     };
 
                     var uploadResult = _cloudinary.Upload(uploadParams);
@@ -59,15 +62,11 @@ namespace SocialNetwork.Services
                     var uploadParams = new VideoUploadParams
                     {
                         File = new FileDescription(path),
-                        EagerTransforms = new List<Transformation>()
-                        {
-                            new EagerTransformation().Width(300).Height(300).Crop("pad").AudioCodec("none"),
-                            new EagerTransformation().Width(160).Height(100).Crop("crop").Gravity("south").AudioCodec("none"),
-                        },
-                        EagerAsync = true,
+                       // UploadPreset = CLOUDINARY_UPLOAD_PRESET,
+                        //EagerAsync = true,
                     };
 
-                    var uploadResult = _cloudinary.Upload(uploadParams);
+                    var uploadResult = _cloudinary.UploadLarge(uploadParams);
                     return uploadResult.Url.ToString();
                 }
 
