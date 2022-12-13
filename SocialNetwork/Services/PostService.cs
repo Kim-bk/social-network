@@ -13,32 +13,37 @@ using System.Linq;
 using System.Text;
 using SocialNetwork.Models.DAL.Repositories;
 using System.IO;
+using SocialNetwork.Models.DTOs;
 
 namespace SocialNetwork.Services
 {
     public class PostService : BaseService, IPostService
     {
+        #region Image vs Video extensions
+        private readonly List<string> ImageExtensions = new() { ".png", ".jpg", ".jpeg" };
+        private readonly List<string> VideoExtensions = new() { ".mp4", "m4p", ".m4v", ".mpg", ".mpeg", ".m2v", ".mov" };
+        #endregion
+
         #region Cloudinary Informations
 
         private readonly string CLOUD_NAME = "dor7ghk95";
         private readonly string API_KEY = "588273259994552";
         private readonly string API_SECRET = "YImi-iuUxclgZJFC2-R0cN3tcEA";
-        private readonly string CLOUDINARY_API = "https://api.cloudinary.com/v1_1/dor7ghk95/mh/upload";
-        private readonly string CLOUDINARY_UPLOAD_PRESET = "ot8kn4em/mh/upload";
 
         #endregion
 
         private readonly IPostRepository _postRepo;
+        private readonly IFriendRepository _friendRepo;
         private readonly IUserRepository _userRepo;
         private Cloudinary _cloudinary;
-        private readonly List<string> ImageExtensions = new List<string> {".png", ".jpg", ".jpeg" };
-        private readonly List<string> VideoExtensions = new List<string> { ".mp4", "m4p", ".m4v",".mpg", ".mpeg", ".m2v", ".mov" };
 
         public PostService(IPostRepository postRepo, IMapperCustom mapper
-            , IUnitOfWork unitOfWork, IUserRepository userRepo) : base(unitOfWork, mapper)
+            , IUnitOfWork unitOfWork, IUserRepository userRepo
+            , IFriendRepository friendRepo) : base(unitOfWork, mapper)
         {
             _postRepo = postRepo;
             _userRepo = userRepo;
+            _friendRepo = friendRepo;
         }
         private string UploadImage(string path)
         {
@@ -62,8 +67,6 @@ namespace SocialNetwork.Services
                     var uploadParams = new VideoUploadParams
                     {
                         File = new FileDescription(path),
-                       // UploadPreset = CLOUDINARY_UPLOAD_PRESET,
-                        //EagerAsync = true,
                     };
 
                     var uploadResult = _cloudinary.UploadLarge(uploadParams);
@@ -131,14 +134,17 @@ namespace SocialNetwork.Services
             }
         }
 
-        public Task<List<Post>> GetFriendPosts(int userId)
+        public async Task<List<PostDTO>> GetFriendPosts(int userId)
         {
-            throw new System.NotImplementedException();
+            var friendIds = await _friendRepo.GetFriendsOfUser(userId);
+            var userFriendPosts = await _postRepo.GetUserFriendPosts(friendIds);
+            return _mapper.MapPosts(userFriendPosts);
         }
 
-        public Task<List<Post>> GetPosts(int userId)
+        public async Task<List<PostDTO>> GetPosts(int userId)
         {
-            throw new System.NotImplementedException();
+            var userPosts = await _postRepo.GetUserPosts(userId);
+            return _mapper.MapPosts(userPosts);
         }
 
         public async Task<bool> UpdatePost(PostRequest post, int authorId)

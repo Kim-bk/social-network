@@ -36,7 +36,8 @@ namespace SocialNetwork.Extensions
                .AddScoped<IRefreshTokenRepository, RefreshTokenRepository>()
                .AddScoped<IUserGroupRepository, UserGroupRepository>()
                .AddScoped<ICredentialRepository, CredentialRepository>()
-               .AddScoped<IPostRepository, PostRepository>();
+               .AddScoped<IPostRepository, PostRepository>()
+               .AddScoped<IFriendRepository, FriendRepository>();
         }
 
         public static IServiceCollection AddServices(this IServiceCollection services)
