@@ -24,16 +24,18 @@ namespace SocialNetwork.Controllers
         private readonly RefreshTokenGenerator _refreshTokenGenerator;
         private readonly IPermissionService _permissionService;
         private readonly IPostService _postService;
+        private readonly IFriendService _friendService;
 
         public UserController(IUserService userService, IAuthService authService
                  , RefreshTokenGenerator refreshTokenGenerator, IPermissionService permissionService
-                 , IPostService postService)
+                 , IPostService postService, IFriendService friendService)
         {
             _userService = userService;
             _authService = authService;
             _refreshTokenGenerator = refreshTokenGenerator;
             _permissionService = permissionService;
             _postService = postService;
+            _friendService = friendService;
         }
 
         [Authorize]
@@ -257,6 +259,55 @@ namespace SocialNetwork.Controllers
             return await _postService.GetFriendPosts(userId);
         }
 
+        #endregion
+
+        #region Friend
+
+        [Authorize]
+        [HttpGet("friend")]
+        // api/user/friend
+        public async Task<List<UserDTO>> GetFriend()
+        {
+            var userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            return await _friendService.GetFriends(userId);
+        }
+
+        [Authorize]
+        [HttpGet("invitation-friend")]
+        // api/user/friend-invitation
+        public async Task<List<UserDTO>> GetFriendInvitation()
+        {
+            var userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            return await _friendService.GetInvatitationFriends(userId);
+        }
+
+        [Authorize]
+        [HttpPost("friend")]
+        // api/user/friend
+        public async Task<bool> AddFriend([FromBody] FriendRequest req)
+        {
+            var userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            return await _friendService.AddFriend(userId, req.FriendId);
+        }
+
+        [Authorize]
+        [HttpPut("friend")]
+        // api/user/friend
+        public async Task<bool> ManageFriend([FromBody] FriendRequest req)
+        {
+            var userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            return await _friendService.ManageFriend(userId, req);
+        }
+
+        [Authorize]
+        [HttpGet("search")]
+        // api/user/search?keyword=
+        public async Task<List<UserDTO>> SearchFriend([FromQuery] string keyword)
+        {
+            var userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var rs = await _friendService.SearchFriend(userId, keyword);
+            return rs;
+        }
         #endregion
     }
 }

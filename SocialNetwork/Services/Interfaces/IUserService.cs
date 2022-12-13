@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using SocialNetwork.Models.DTOs.Requests;
 using SocialNetwork.Models;
 using SocialNetwork.Models.DTOs.Responses;
+using System.Collections.Generic;
+using SocialNetwork.Models.DTOs;
 
 namespace SocialNetwork.Services
 {

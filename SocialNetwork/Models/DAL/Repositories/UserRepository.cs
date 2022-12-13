@@ -12,5 +12,14 @@ namespace SocialNetwork.Models.DAL.Repositories
         {
         }
 
+        public async Task<List<User>> GetListUsers(List<int> listIds)
+        {
+            return await GetQuery(us => listIds.Contains(us.Id)).ToListAsync();
+        }
+
+        public async Task<List<User>> SearchFriend(string userName)
+        {
+            return await GetQuery(us => us.Name.ToLower().Contains(userName.ToLower())).ToListAsync();
+        }
     }
 }

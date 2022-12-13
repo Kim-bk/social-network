@@ -10,5 +10,6 @@ namespace SocialNetwork.Models.DTOs
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime DateCreated { get; set; }
+        public bool IsFriend { get; set; }
     }
 }

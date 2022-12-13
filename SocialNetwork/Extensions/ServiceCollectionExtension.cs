@@ -56,7 +56,8 @@ namespace SocialNetwork.Extensions
                 .AddScoped<IUserGroupService, UserGroupService>()
                 .AddScoped<IAuthService, AuthService>()
                 .AddScoped<IAdminService, AdminService>()
-                .AddScoped<IPostService, PostService>();
+                .AddScoped<IPostService, PostService>()
+                .AddScoped<IFriendService, FriendService>();
         }
     }
 }

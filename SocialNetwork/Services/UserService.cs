@@ -9,7 +9,6 @@ using SocialNetwork.Models.DAL;
 using SocialNetwork.Models.DAL.Interfaces;
 using SocialNetwork.Models.DAL.Repositories;
 using SocialNetwork.Models.DTOs;
-using SocialNetwork.Models.DTOs.Requests;
 using SocialNetwork.Models.DTOs.Responses;
 using SocialNetwork.Services.Base;
 using SocialNetwork.Services.Interfaces;
