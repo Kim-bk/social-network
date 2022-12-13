@@ -8,6 +8,10 @@ using SocialNetwork.Services.Interfaces;
 using SocialNetwork.Services.TokenGenerators;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SocialNetwork.Models;
+using System.Collections.Generic;
+using SocialNetwork.Models.DTOs.Responses;
+using Microsoft.AspNetCore.Http;
 
 namespace SocialNetwork.Controllers
 {
@@ -19,21 +23,18 @@ namespace SocialNetwork.Controllers
         private readonly IAuthService _authService;
         private readonly RefreshTokenGenerator _refreshTokenGenerator;
         private readonly IPermissionService _permissionService;
+        private readonly IPostService _postService;
 
         public UserController(IUserService userService, IAuthService authService
-                 , RefreshTokenGenerator refreshTokenGenerator, IPermissionService permissionService)
+                 , RefreshTokenGenerator refreshTokenGenerator, IPermissionService permissionService
+                 , IPostService postService)
         {
             _userService = userService;
             _authService = authService;
             _refreshTokenGenerator = refreshTokenGenerator;
             _permissionService = permissionService;
+            _postService = postService;
         }
-
-        [HttpGet("test")]
-        public async Task<IActionResult> Test()
-        {
-            return Ok("test");
-        }    
 
         [Authorize]
         [HttpGet]
@@ -194,6 +195,68 @@ namespace SocialNetwork.Controllers
             }
             return BadRequest(rs.ErrorMessage);
         }
-      
+
+        #region Post 
+
+        [Authorize]
+        [HttpPost("post")]
+        // api/user/post
+        public async Task<bool> AddPost([FromForm] PostRequest request)
+        {
+            var userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            return await _postService.AddPost(request, userId);
+        }
+
+        [Authorize]
+        [HttpPut("post/{postId:int}")]
+        // api/user/post
+        public async Task<IActionResult> UpdatePost([FromForm] PostRequest request, int postId)
+        {
+            try
+            {
+                var userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+                var rs = await _postService.UpdatePost(request, postId);
+                if (!rs.IsSuccess)
+                {
+                    return BadRequest(rs.ErrorMessage);
+                }
+                return Ok(rs.IsSuccess);
+            }
+            catch
+            {
+                throw;
+            } 
+            
+        }
+
+        [Authorize]
+        [HttpDelete("post/{postId:int}")]
+        // api/user/post
+        public async Task<bool> DeletePost(int postId)
+        {
+            //var userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            return await _postService.DeletePost(postId);
+        }
+
+        [Authorize]
+        [HttpGet("post")]
+        // api/user/post
+        public async Task<List<PostDTO>> GetPosts()
+        {
+            var userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            return await _postService.GetPosts(userId);
+        }
+
+
+        [Authorize]
+        [HttpGet("friend-post")]
+        // api/user/post
+        public async Task<List<PostDTO>> GetFriendPosts()
+        {
+            var userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            return await _postService.GetFriendPosts(userId);
+        }
+
+        #endregion
     }
 }

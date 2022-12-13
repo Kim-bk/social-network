@@ -1,11 +1,88 @@
 {
   "Version": 1,
-  "Hash": "t1DbaqTBKBUjCVQ8OnK2onzfhQwfHFZMDlUZJ/Oxo3Q=",
+  "Hash": "uCnAqXg+Afa/RNQYChX7iO61kan+NV0EGSwLpX8oSNc=",
   "Source": "SocialNetwork",
   "BasePath": "_content/SocialNetwork",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "SocialNetwork\\wwwroot",
+      "Source": "SocialNetwork",
+      "ContentRoot": "D:\\Semester 7\\Chuyên đề CNTT\\SocialNetwork\\wwwroot\\",
+      "BasePath": "_content/SocialNetwork",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\Semester 7\\Chuyên đề CNTT\\SocialNetwork\\wwwroot\\Images\\2799132.jpg",
+      "SourceId": "SocialNetwork",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Semester 7\\Chuyên đề CNTT\\SocialNetwork\\wwwroot\\",
+      "BasePath": "_content/SocialNetwork",
+      "RelativePath": "Images/2799132.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\2799132.jpg"
+    },
+    {
+      "Identity": "D:\\Semester 7\\Chuyên đề CNTT\\SocialNetwork\\wwwroot\\Images\\488126.jpg",
+      "SourceId": "SocialNetwork",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Semester 7\\Chuyên đề CNTT\\SocialNetwork\\wwwroot\\",
+      "BasePath": "_content/SocialNetwork",
+      "RelativePath": "Images/488126.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\488126.jpg"
+    },
+    {
+      "Identity": "D:\\Semester 7\\Chuyên đề CNTT\\SocialNetwork\\wwwroot\\Images\\glory graves.jpg",
+      "SourceId": "SocialNetwork",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Semester 7\\Chuyên đề CNTT\\SocialNetwork\\wwwroot\\",
+      "BasePath": "_content/SocialNetwork",
+      "RelativePath": "Images/glory graves.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\glory graves.jpg"
+    },
+    {
+      "Identity": "D:\\Semester 7\\Chuyên đề CNTT\\SocialNetwork\\wwwroot\\Images\\hinh-nen-background-dep-50.jpg",
+      "SourceId": "SocialNetwork",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Semester 7\\Chuyên đề CNTT\\SocialNetwork\\wwwroot\\",
+      "BasePath": "_content/SocialNetwork",
+      "RelativePath": "Images/hinh-nen-background-dep-50.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\hinh-nen-background-dep-50.jpg"
+    }
+  ]
 }

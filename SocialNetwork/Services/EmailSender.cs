@@ -19,7 +19,7 @@ namespace SocialNetwork.Services
         {
             try
             {
-                var api = "https://social-network-api.azurewebsites.net/api" + emailFor + "?code=" + code;
+                var api = "https://social-network-api.azurewebsites.net" + "/api/" + emailFor + "?code=" + code;
                 string subject = "";
                 string body = "";
 

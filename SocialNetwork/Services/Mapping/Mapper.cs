@@ -14,7 +14,12 @@ namespace SocialNetwork.Services.Mapping
         {
             _autoMapper = autoMapper;
         }
-       
+
+        public List<PostDTO> MapPosts(List<Post> posts)
+        {
+            return _autoMapper.Map<List<Post>, List<PostDTO>>(posts);
+        }
+
         public List<UserDTO> MapUsers(List<User> users)
         {
             return _autoMapper.Map<List<User>, List<UserDTO>>(users);
