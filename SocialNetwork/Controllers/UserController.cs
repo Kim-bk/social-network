@@ -206,6 +206,32 @@ namespace SocialNetwork.Controllers
         }
 
         [Authorize]
+        [HttpPut("post")]
+        // api/user/post
+        public async Task<bool> UpdatePost([FromBody] PostRequest request)
+        {
+            try
+            {
+                var userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+                return await _postService.UpdatePost(request, userId);
+            }
+            catch
+            {
+                throw;
+            } 
+            
+        }
+
+        [Authorize]
+        [HttpDelete("post/{postId:int}")]
+        // api/user/post
+        public async Task<bool> DeletePost(int postId)
+        {
+            //var userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            return await _postService.DeletePost(postId);
+        }
+
+        [Authorize]
         [HttpGet("post")]
         // api/user/post
         public async Task<List<PostDTO>> GetPosts()
@@ -213,6 +239,7 @@ namespace SocialNetwork.Controllers
             var userId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
             return await _postService.GetPosts(userId);
         }
+
 
         [Authorize]
         [HttpGet("friend-post")]

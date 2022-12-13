@@ -45,7 +45,7 @@ namespace SocialNetwork.Services
             _userRepo = userRepo;
             _friendRepo = friendRepo;
         }
-        private string UploadImage(string path)
+        private string UploadFile(string path)
         {
             try
             {
@@ -90,21 +90,26 @@ namespace SocialNetwork.Services
             {
                 var user = await _userRepo.FindAsync(us => us.Id == authorId);
 
-                Account account = new(CLOUD_NAME, API_KEY, API_SECRET);
-                _cloudinary = new Cloudinary(account);
-                var fileUrl = UploadImage(post.FileUrl);
-                if (fileUrl == "null")
-                    return false;
-
                 var newPost = new Post
                 {
                     Content = post.Content,
-                    FileUrl = fileUrl,
                     IsApproved = false,
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now,
                     User = user,
                 };
+
+                if (post.FileUrl != "")
+                {
+                    Account account = new(CLOUD_NAME, API_KEY, API_SECRET);
+                    _cloudinary = new Cloudinary(account);
+                    var fileUrl = UploadFile(post.FileUrl);
+
+                    if (fileUrl == "null")
+                        return false;
+
+                    newPost.FileUrl = fileUrl;
+                }
 
                 await _postRepo.AddAsync(newPost);
                 await _unitOfWork.CommitTransaction();
@@ -155,14 +160,22 @@ namespace SocialNetwork.Services
                 if (findPost == null)
                     return false;
 
+                if (post.FileUrl != "")
+                {
+                    Account account = new(CLOUD_NAME, API_KEY, API_SECRET);
+                    _cloudinary = new Cloudinary(account);
+                    var fileUrl = UploadFile(post.FileUrl);
+                    findPost.FileUrl = fileUrl;
+                }    
+              
                 findPost.Content = post.Content;
-                findPost.FileUrl = post.FileUrl;
                 findPost.UpdatedDate = DateTime.Now;
 
                 //_postRepo.Update(findPost);
                 await _unitOfWork.CommitTransaction();
                 return true;
             }
+
             catch
             {
                 throw;
