@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SocialNetwork.Models;
 
@@ -11,9 +12,10 @@ using SocialNetwork.Models;
 namespace SocialNetwork.Migrations
 {
     [DbContext(typeof(SocialNetworkContext))]
-    partial class SocialNetworkContextModelSnapshot : ModelSnapshot
+    [Migration("20221212175526_Update-Db")]
+    partial class UpdateDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -462,7 +464,7 @@ namespace SocialNetwork.Migrations
             modelBuilder.Entity("SocialNetwork.Models.Post", b =>
                 {
                     b.HasOne("SocialNetwork.Models.User", "User")
-                        .WithMany("Posts")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -504,8 +506,6 @@ namespace SocialNetwork.Migrations
             modelBuilder.Entity("SocialNetwork.Models.User", b =>
                 {
                     b.Navigation("Comments");
-
-                    b.Navigation("Posts");
                 });
 
             modelBuilder.Entity("SocialNetwork.Models.UserGroup", b =>

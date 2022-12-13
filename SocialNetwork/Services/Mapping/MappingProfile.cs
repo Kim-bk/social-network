@@ -8,8 +8,8 @@ namespace SocialNetwork.Services.Mapping
     {
         public MappingProfile()
         {
-            // User -> UserDTO
             CreateMap<User, UserDTO>();
+            CreateMap<Post, PostDTO>();
         }
     }
 }

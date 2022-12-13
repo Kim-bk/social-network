@@ -12,8 +12,6 @@ namespace SocialNetwork.Models
         {
         }
 #nullable enable
-
-        
       
         public bool Status { get; set; }
         public int NotificationObjectId { get; set; }

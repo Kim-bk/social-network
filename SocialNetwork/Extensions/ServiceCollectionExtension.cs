@@ -35,7 +35,8 @@ namespace SocialNetwork.Extensions
                .AddScoped<IRoleRepository, RoleRepository>()
                .AddScoped<IRefreshTokenRepository, RefreshTokenRepository>()
                .AddScoped<IUserGroupRepository, UserGroupRepository>()
-               .AddScoped<ICredentialRepository, CredentialRepository>();
+               .AddScoped<ICredentialRepository, CredentialRepository>()
+               .AddScoped<IPostRepository, PostRepository>();
         }
 
         public static IServiceCollection AddServices(this IServiceCollection services)
@@ -53,7 +54,8 @@ namespace SocialNetwork.Extensions
                 .AddScoped<IRoleService, RoleService>()
                 .AddScoped<IUserGroupService, UserGroupService>()
                 .AddScoped<IAuthService, AuthService>()
-                .AddScoped<IAdminService, AdminService>();
+                .AddScoped<IAdminService, AdminService>()
+                .AddScoped<IPostService, PostService>();
         }
     }
 }
