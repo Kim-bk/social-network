@@ -178,7 +178,7 @@ namespace SocialNetwork.Services
         {
             try
             {
-                var findPost = await _postRepo.FindAsync(p => p.Id == postId);
+                var findPost = await _postRepo.FindAsync(p => p.Id == postId && p.IsApproved == true);
                 if (findPost == null)
                     return new PostResponse
                     {

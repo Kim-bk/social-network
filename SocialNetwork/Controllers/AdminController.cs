@@ -4,6 +4,8 @@ using SocialNetwork.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using SocialNetwork.Models.DTOs;
 
 namespace SocialNetwork.Controllers
 {
@@ -29,6 +31,20 @@ namespace SocialNetwork.Controllers
         {
             var rs = await _adminService.GetRolesOfUserGroup(userGroupId);
             return Ok(rs);
+        }
+
+        [Permission("MANAGE_POST")]
+        [HttpPost("post/{postId:int}")]
+        public async Task<bool> ApprovePost(int postId, [FromBody] string action)
+        {
+            return await _adminService.ApprovePost(postId, action);
+        }
+
+        [Permission("MANAGE_POST")]
+        [HttpGet("post")]
+        public async Task<List<PostDTO>> GetPosts()
+        {
+            return await _adminService.GetUnapprovedPosts();
         }
 
         [AllowAnonymous]        

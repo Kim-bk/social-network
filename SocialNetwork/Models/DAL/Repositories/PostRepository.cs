@@ -12,6 +12,11 @@ namespace SocialNetwork.Models.DAL.Repositories
         {
         }
 
+        public async Task<List<Post>> GetUnapprovedPosts()
+        {
+            return await GetQuery(p => p.IsApproved == false).ToListAsync();
+        }
+
         public async Task<List<Post>> GetUserFriendPosts(List<int> friendIds)
         {
             List<Post> result = new();
@@ -24,7 +29,7 @@ namespace SocialNetwork.Models.DAL.Repositories
 
         public async Task<List<Post>> GetUserPosts(int userId)
         {
-            return await GetQuery(p => p.User.Id == userId).ToListAsync();
+            return await GetQuery(p => p.User.Id == userId && p.IsApproved == true).ToListAsync();
         }
     }
 }
