@@ -1,4 +1,4 @@
-# 19N14 - TEAM 5 - Social Network: New feeds 
+# 19N14 - TEAM 5 - Social Network: News Feed Design
 
 - Đây là source code bên team BE.
 - Đây là Use-Case Diagram
